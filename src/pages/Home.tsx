@@ -5,9 +5,10 @@ export const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="w-full h-screen">
+      <div className="w-full h-screen ">
         <div >
           {/** Div Player para setar sentimento */}
+          oi
         </div>
 
         <div>
