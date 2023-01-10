@@ -8,13 +8,13 @@ export default function Footer() {
       <footer className="w-full text-slate-400">
         <div className="pt-16 pb-12 text-sm border-t border-slate-900 bg-slate-800">
           <div className="container px-6 mx-auto">
-            <div className="grid grid-cols-3 md:grid-cols-8 lg:grid-cols-12 justify-center">
+            <div className="grid grid-cols-3 md:grid-cols-8 lg:grid-cols-12 justify-center pocket:grid-cols-1">
               <nav
                 className="col-span-1 md:col-span-4 lg:col-span-3"
                 aria-labelledby="footer-docs-dark"
               >
                 <h3
-                  className="mb-6 text-base font-medium text-white"
+                  className="mb-6 text-base font-medium text-white pocket:mb-3"
                   id="footer-docs-dark"
                 >
                   Docs & help
@@ -35,8 +35,8 @@ export default function Footer() {
                 aria-labelledby="footer-about-dark"
               >
                 <h3
-                  className="mb-6 text-base font-medium text-white"
-                  id="footer-about-dark"
+                  className="mb-6 text-base font-medium text-white pocket:mb-3"
+                  id="footer-about-dark "
                 >
                   About us
                 </h3>
@@ -62,7 +62,7 @@ export default function Footer() {
                 aria-labelledby="footer-get-in-touch-dark"
               >
                 <h3
-                  className="mb-6 text-base font-medium text-white"
+                  className="mb-6 text-base font-medium text-white pocket:mb-3"
                   id="footer-get-in-touch-dark"
                 >
                   Get in touch
@@ -86,7 +86,7 @@ export default function Footer() {
         <div className="py-4 text-sm border-t border-slate-900 bg-slate-700">
           <div className="container px-6 mx-auto">
             <div className="grid grid-cols-3 gap-6 md:grid-cols-8 lg:grid-cols-12">
-              <div className="col-span-1 md:col-span-4 lg:col-span-6">
+              <div className="col-span-1 md:col-span-4 lg:col-span-6 pocket:whitespace-nowrap">
                 <a
                   href="https://github.com/projects2023raulgabriel"
                   className="transition-colors duration-300 hover:text-indigo-500"
