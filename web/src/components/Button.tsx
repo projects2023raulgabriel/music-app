@@ -8,6 +8,7 @@ interface Props {
   onClick: () => void;
   radius: string;
   width: string;
+  zIndex: string
 }
 
 export const Button: React.FC<Props> = ({ 
@@ -17,7 +18,8 @@ export const Button: React.FC<Props> = ({
    height, 
    onClick, 
    radius, 
-   width 
+   width,
+   zIndex, 
 }) => {
   return (
     <button
@@ -28,6 +30,7 @@ export const Button: React.FC<Props> = ({
         borderRadius: radius,
         height,
         width,
+        zIndex
       }}
     >
       {children}
