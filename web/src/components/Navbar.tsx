@@ -30,43 +30,19 @@ export const Navbar = () => {
 
   return (
     <>
-      {!inView && (
-        <section className="top-0 sticky z-30">
-          <div className="bg-slate-800 text-white text-3xl pb-3 top-0 lazy pt-3">
-            <h1 className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600 text-center">
-              <NavLink to="/"> Home </NavLink>
-            </h1>
-
-            <Box sx={{ flexGrow: 0 }}>
-            <IconButton
-              title="Mudar tema do site"
-              onClick={() => changeTheme()}
-              size="large"
-            >
-              {theme.palette.mode === "light" ? (
-                <Brightness3Icon />
-              ) : (
-                <EmojiObjectsIcon />
-              )}
-            </IconButton>
-          </Box>
-          </div>
-        </section>
-      )}
-      <section className="default top" ref={ref}>
-        <div className="bg-slate-800 text-white text-3xl pb-3">
-          <h1 className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600 text-center">
-            <Link to="/" className="items-center justify-center">
+      <div className="flex items-center justify-center flex-row" ref={ref}>
+        <div className="bg-slate-800 text-white text-3xl w-full pb-5">
+          <h1 className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600 text-center pt-3 ">
+            <Link to="/" className="">
               {" "}
               Home{" "}
             </Link>
           </h1>
-
-          <Box sx={{ flexGrow: 0 }}>
+        </div>
+          <Box className="bg-slate-800 flex items-center justify-center h-full p-3" style={{padding: "13.9px"}}>
             <IconButton
               title="Mudar tema do site"
               onClick={() => changeTheme()}
-              size="large"
             >
               {theme.palette.mode === "light" ? (
                 <Brightness3Icon />
@@ -75,8 +51,7 @@ export const Navbar = () => {
               )}
             </IconButton>
           </Box>
-        </div>
-      </section>
+      </div>
     </>
   );
 };
