@@ -13,13 +13,6 @@ export const Navbar = () => {
   const theme = useTheme();
   const changeTheme = useChangeTheme();
 
-  const [ref, inView] = useInView({
-    rootMargin: "0px",
-    threshold: 1,
-    initialInView: true,
-    delay: 10,
-  });
-
   const themeProvider = createTheme(
     adaptV4Theme({
       palette: {
@@ -30,13 +23,13 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center flex-row" ref={ref}>
+      <div className="flex items-center justify-center flex-row">
         <div className="bg-slate-800 text-white text-3xl w-full pb-5">
           <h1 className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600 text-center pt-3 ">
-            <Link to="/" className="">
+            <a href="/" className="">
               {" "}
               Home{" "}
-            </Link>
+            </a>
           </h1>
         </div>
           <Box className="bg-slate-800 flex items-center justify-center h-full p-3" style={{padding: "13.9px"}}>

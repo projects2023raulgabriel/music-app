@@ -5,7 +5,7 @@ import {
   StyledEngineProvider,
 } from "@mui/material/styles";
 import ThemeProvider from "./context/darkMode/index";
-import CssBaseline from "@mui/material/CssBaseline"; 
+import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
   const theme = createTheme(
@@ -19,10 +19,8 @@ function App() {
   return (
     <StyledEngineProvider>
       <ThemeProvider theme={theme}>
-      <div className="App">
         <RoutesList />
         <CssBaseline />
-      </div>
       </ThemeProvider>
     </StyledEngineProvider>
   );
