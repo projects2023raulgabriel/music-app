@@ -27,3 +27,4 @@ notes.txt
 .env
 yarn.lock
 package-lock.json
+/src/components/Form.tsx
