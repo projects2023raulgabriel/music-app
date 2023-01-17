@@ -7,7 +7,7 @@ export default function Footer() {
     <>
       <footer className="w-full text-slate-400">
         <div className="pt-16 pb-12 text-sm border-t border-slate-900 bg-slate-800">
-          <div className="container px-6 mx-auto">
+          <div className="px-6 mx-auto">
             <div className="grid grid-cols-3 md:grid-cols-8 lg:grid-cols-12 justify-center pocket:grid-cols-1">
               <nav
                 className="col-span-1 md:col-span-4 lg:col-span-3"
