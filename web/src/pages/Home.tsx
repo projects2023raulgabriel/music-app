@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
+import WebPlayback from "./WebPlayback";
 import ReactPlayer from "react-player";
-import Footer from "../components/Footer";
-import { Navbar } from "../components/Navbar";
-import { Button } from "../components/Button";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -12,12 +10,42 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { TrackObjectSimplified } from "./interfaces";
 import { generatePath, Link, resolvePath } from "react-router-dom";
 import { MdArrowDropDown } from "react-icons/md";
-
+import { HiLogout } from "react-icons/hi";
+import { IToken } from "../interfaces";
+import Login from "./Login";
+import { BsSpotify } from "react-icons/bs";
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
-
 export const Home = () => {
+  // login and spotify auth
+  const [token, setToken] = useState<IToken>();
+  useEffect(() => {
+    const hash = window.location.hash;
+    let token = window.localStorage.getItem("token");
+
+    // getToken()
+
+    if (!token && hash) {
+      //@ts-ignore
+      token = hash
+        .substring(1)
+        .split("&")
+        .find((elem) => elem.startsWith("access_token"))
+        .split("=")[1];
+
+      window.location.hash = "";
+      window.localStorage.setItem("token", token);
+    }
+    //  @ts-ignore
+    setToken(token);
+  }, []);
+  const logout = () => {
+    // @ts-ignore
+    setToken(undefined);
+    window.localStorage.removeItem("token");
+    // window.location.reload();
+  };
   // main state (the song(s) to be suggested)
   const [songs, setSongs] = useState<TrackObjectSimplified[]>([]);
   // configuring spotify wrapper to be used
@@ -247,7 +275,10 @@ export const Home = () => {
                         {song.name}
                       </Link>{" "}
                       <br />
-                     <span className="flex-col flex"> {song.artists[0].name}</span>
+                      <span className="flex-col flex">
+                        {" "}
+                        {song.artists[0].name}
+                      </span>
                     </div>{" "}
                   </title>
                   <span className="hidden"> {song.id} </span>
@@ -268,7 +299,35 @@ export const Home = () => {
                     Listen preview <br /> (if it doesn't work, the song may not
                     have a preview available).
                   </a>
-                </div>
+                </div>{" "}
+                {!token ? (
+                  <Login />
+                ) : (
+                  <>
+                    <div className="py-2 grid grid-cols-3 bg-slate-800 items-center justify-center">
+                      <div className="grid-flow-col text-2xl ml-2 text-white self-center justify-center">
+                        <>
+                          {" "}
+                          <BsSpotify className="text-[#1DB954" />
+                          {song.linked_from}
+                        </>
+                      </div>{" "}
+                      <div className="text-white text-center">
+                        <WebPlayback />
+                      </div>
+                      <nav className="text-center justify-end text-white grid z-10">
+                        <span className="flex flex-row justify-between">
+                          {" "}
+                          Logout{" "}
+                          <HiLogout
+                            className=" ml-3 text-md self-center flex mr-5"
+                            onClick={logout}
+                          />
+                        </span>
+                      </nav>
+                    </div>
+                  </>
+                )}
               </>
             );
           })}

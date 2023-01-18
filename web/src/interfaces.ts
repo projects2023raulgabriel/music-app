@@ -33,3 +33,6 @@ export interface TrackLinkObject {
   type: "track";
   uri: string;
 }
+export interface IToken {
+  token: null | string;
+}
