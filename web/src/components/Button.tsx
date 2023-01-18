@@ -1,38 +1,14 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 interface Props {
-  border: string;
-  color: string;
-  children?: React.ReactNode;
-  height: string;
+  styles: string;
+  children?: ReactNode;
   onClick: () => void;
-  radius: string;
-  width: string;
-  zIndex: string
 }
 
-export const Button: React.FC<Props> = ({ 
-   border, 
-   color, 
-   children, 
-   height, 
-   onClick, 
-   radius, 
-   width,
-   zIndex, 
-}) => {
+export const Button: React.FC<Props> = ({ children, onClick, styles }) => {
   return (
-    <button
-      onClick={onClick}
-      style={{
-        backgroundColor: color,
-        border,
-        borderRadius: radius,
-        height,
-        width,
-        zIndex
-      }}
-    >
+    <button onClick={onClick} className={`${styles}`}>
       {children}
     </button>
   );
