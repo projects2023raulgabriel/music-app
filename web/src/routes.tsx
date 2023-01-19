@@ -6,14 +6,15 @@ import { Home } from "./pages/Home";
 import Login from "./pages/Login";
 import { NotFound } from "./pages/NotFound";
 import { SongPage } from "./pages/SongPage";
-import Token from "./pages/Token";
 import WebPlayback from "./pages/WebPlayback";
+import { LanguageSelector } from "./context/languages/languageSelector";
 
 export const RoutesList = () => {
   return (
     <>
       <Spotify />
       <Navbar />
+      <LanguageSelector />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
