@@ -14,6 +14,7 @@ import { HiLogout } from "react-icons/hi";
 import { IToken } from "../interfaces";
 import Login from "./Login";
 import { BsSpotify } from "react-icons/bs";
+import { Text } from "../components/Text";
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -84,7 +85,7 @@ export const Home = () => {
     });
     const suggestedSongs = bubbleSort(res.tracks);
 
-    const firstFive = suggestedSongs.slice(-1);
+    const firstFive = suggestedSongs.slice(-5);
     setSongs(firstFive);
   };
 
@@ -100,7 +101,7 @@ export const Home = () => {
     });
     const suggestedSongs = bubbleSort(res.tracks);
 
-    const firstFive = suggestedSongs.slice(-1);
+    const firstFive = suggestedSongs.slice(-5);
     setSongs(firstFive);
   };
 
@@ -118,7 +119,7 @@ export const Home = () => {
 
     const suggestedSongs = bubbleSort(res.tracks);
 
-    const firstFive = suggestedSongs.slice(-1);
+    const firstFive = suggestedSongs.slice(-5);
     setSongs(firstFive);
   };
 
@@ -135,7 +136,7 @@ export const Home = () => {
     });
     const suggestedSongs = bubbleSort(res.tracks);
     console.log(res);
-    const firstFive = suggestedSongs.slice(-1);
+    const firstFive = suggestedSongs.slice(-5);
     setSongs(firstFive);
   };
   const getExcitedSongs = async () => {
@@ -151,7 +152,7 @@ export const Home = () => {
     console.log(res.tracks[0].artists);
     const suggestedSongs = bubbleSort(res.tracks);
 
-    const firstFive = suggestedSongs.slice(-1);
+    const firstFive = suggestedSongs.slice(-5);
     setSongs(firstFive);
   };
   const nameToLink = (name: string) => {
@@ -168,7 +169,7 @@ export const Home = () => {
         <div className="flex justify-center flex-col items-center ">
           <h1 className="mt-6 text-2xl">Music RecomendApp</h1>
           <label id="demo-simple-select-label">
-            Você está se sentindo uma pessoa:
+            <Text tid="homeLabelText" />
           </label>
           <div className="hidden pocket:flex phone:flex">
             <MdArrowDropDown
@@ -184,35 +185,35 @@ export const Home = () => {
                 onClick={getAngrySongs}
                 className="text-left flex flex-col justify-center rounded-md"
               >
-                Raivosa
+                <Text tid="firstOptionMood" />
               </option>
               <option
                 value={20}
                 onClick={getExcitedSongs}
                 className="text-left flex flex-col justify-center rounded-md"
               >
-                Animada
+                <Text tid="secondOptionMood" />
               </option>
               <option
                 value={30}
                 onClick={getDreamerSongs}
                 className="flex flex-col justify-center text-left rounded-md"
               >
-                Sonhadora
+                <Text tid="thirdOptionMood" />
               </option>
               <option
                 value={30}
                 onClick={getSadSongs}
                 className="flex flex-col justify-center text-left rounded-md"
               >
-                Triste
+                <Text tid="fourthOptionMood" />
               </option>
               <option
                 value={30}
                 onClick={getCozySongs}
                 className="flex flex-col justify-center text-left rounded-md"
               >
-                Calma
+                <Text tid="fifthOptionMood" />{" "}
               </option>
             </select>
           </div>
@@ -222,7 +223,7 @@ export const Home = () => {
           >
             <FormControl fullWidth className="mt-4">
               <InputLabel id="demo-simple-select-label">
-                Você está se sentindo uma pessoa:
+                <Text tid="homeLabelText" />
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
@@ -230,19 +231,19 @@ export const Home = () => {
                 label="Sentimentos"
               >
                 <MenuItem value={10} onClick={getAngrySongs}>
-                  Raivosa
+                  <Text tid="firstOptionMood" />
                 </MenuItem>
                 <MenuItem value={20} onClick={getExcitedSongs}>
-                  Animada
+                  <Text tid="secondOptionMood" />
                 </MenuItem>
                 <MenuItem value={30} onClick={getDreamerSongs}>
-                  Sonhadora
+                  <Text tid="thirdOptionMood" />
                 </MenuItem>
                 <MenuItem value={40} onClick={getSadSongs}>
-                  Triste
+                  <Text tid="fourthOptionMood" />
                 </MenuItem>
                 <MenuItem value={50} onClick={getCozySongs}>
-                  Calma
+                  <Text tid="fifthOptionMood" />
                 </MenuItem>
               </Select>
             </FormControl>
@@ -288,7 +289,7 @@ export const Home = () => {
                       window.open(`${song.external_urls.spotify}`, "_blank")
                     }
                   >
-                    Listen on Spotify
+                    <Text tid="songSecondColumn" />
                   </span>
                   <a
                     href={song.preview_url}
@@ -296,8 +297,8 @@ export const Home = () => {
                     className="flex flex-col text-center self-center"
                   >
                     {" "}
-                    Listen preview <br /> (if it doesn't work, the song may not
-                    have a preview available).
+                    <Text tid="songThirdColumnBefore" /> <br />{" "}
+                    <Text tid="songThirdColumnAfter" />
                   </a>
                 </div>{" "}
                 {!token ? (
@@ -308,7 +309,7 @@ export const Home = () => {
                       <div className="grid-flow-col text-2xl ml-2 text-white self-center justify-center">
                         <>
                           {" "}
-                          <BsSpotify className="text-[#1DB954" />
+                          <BsSpotify className="text-[#1DB954]" />
                           {song.linked_from}
                         </>
                       </div>{" "}

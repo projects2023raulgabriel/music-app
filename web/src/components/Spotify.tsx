@@ -1,5 +1,6 @@
 import React from "react";
 import { BsSpotify } from "react-icons/bs";
+import { Text } from "./Text";
 
 export const Spotify = () => {
   return (
@@ -9,10 +10,10 @@ export const Spotify = () => {
           <BsSpotify className="text-5xl hover:text-white duration-300 cursor-pointer" onClick={()=>window.open("https://spotify.com", "_blank")} />
         </div>
         <div className="justify-center self-center text-center my-2 tablet:text-md phone:text-sm pocket:text-xs">
-            Content, media and audio made available by Spotify.
+          <Text tid="spotifyDisclaimerMiddleText" /> 
         </div>
         <div className="justify-center self-center text-right my-2 phone:text-sm pocket:text-xs">
-            All content subject to Spotify Platform Terms and Conditions.
+            <Text tid="spotifyDisclaimerRightText" />
         </div>
       </nav>
     </div>

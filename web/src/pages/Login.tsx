@@ -1,22 +1,28 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { BsSpotify } from "react-icons/bs";
 import { Button } from "../components/Button";
+import { Text } from "../components/Text";
+import { LanguageContext } from "../context/languages/languageContext";
 
 function Login() {
+  const [clickTest, setClickTest] = useState(<></>);
+  const { dictionary } = useContext(LanguageContext);
   const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
   const REDIRECT_URI = "http://localhost:5173";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
+
   return (
     <div className="App">
       <header className="py-3 grid grid-cols-1 items-center bg-slate-800 justify-between">
         <span className="text-white text-lg text-center">
           {" "}
-          Login to play the song
+          <Text tid="loginPageFirstSpan" />
         </span>
         <span className="text-white text-center">
           {" "}
-          (the song info and player will be displayed below).{" "}
+          
+          <Text tid="loginPageSecondSpan" />{" "}
         </span>
         <Button
           onClick={() => {
@@ -27,7 +33,7 @@ function Login() {
           }}
           styles="text-white mt-2 hover:text-indigo-500 duration-300"
         >
-          Log in to Spotify{" "}
+        <Text tid="loginButton" />  {" "}
         </Button>{" "}
         <div className="flex text-2xl justify-center">
           {" "}

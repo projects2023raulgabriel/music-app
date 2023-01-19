@@ -1,6 +1,7 @@
 import React from "react";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+import { Text } from "./Text";
 
 export default function Footer() {
   return (
@@ -17,15 +18,19 @@ export default function Footer() {
                   className="mb-6 text-base font-medium text-white pocket:mb-3"
                   id="footer-docs-dark"
                 >
-                  Docs & help
+                  <Text tid="footerFirstTitle" />
                 </h3>
                 <ul>
                   <li className="mb-2 leading-6">
-                  <span
+                    <span
                       className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600 cursor-pointer"
-                      onClick={()=>window.location.assign("https://github.com/projects2023raulgabriel/music-app/docs")}
+                      onClick={() =>
+                        window.location.assign(
+                          "https://github.com/projects2023raulgabriel/music-app/docs"
+                        )
+                      }
                     >
-                      Documentation
+                      <Text tid="footerFirstColumnText" />
                     </span>
                   </li>
                 </ul>
@@ -38,21 +43,25 @@ export default function Footer() {
                   className="mb-6 text-base font-medium text-white pocket:mb-3"
                   id="footer-about-dark "
                 >
-                  About us
+                  <Text tid="footerSecondTitle" />{" "}
                 </h3>
                 <ul>
                   <li className="mb-2 leading-6">
                     <span
                       className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600 cursor-pointer"
-                      onClick={()=>window.location.assign("https://github.com/projects2023raulgabriel")}
+                      onClick={() =>
+                        window.location.assign(
+                          "https://github.com/projects2023raulgabriel"
+                        )
+                      }
                     >
-                      About us
+                      <Text tid="footerSecondColumnFirstText" />
                     </span>
                   </li>
 
                   <li className="mb-2 leading-6">
                     <a className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600">
-                      Blog
+                      <Text tid="footerSecondColumnSecondText" />
                     </a>
                   </li>
                 </ul>
@@ -65,17 +74,17 @@ export default function Footer() {
                   className="mb-6 text-base font-medium text-white pocket:mb-3"
                   id="footer-get-in-touch-dark"
                 >
-                  Get in touch
+                  <Text tid="footerThirdTitle" />
                 </h3>
                 <ul>
                   <li className="mb-2 leading-6">
                     <a className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600">
-                      Contact
+                      <Text tid="footerThirdColumnFirstText" />
                     </a>
                   </li>
                   <li className="mb-2 leading-6">
                     <a className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600">
-                      Support
+                      <Text tid="footerThirdColumnSecondText" />
                     </a>
                   </li>
                 </ul>
@@ -93,7 +102,9 @@ export default function Footer() {
                   target={"_blank"}
                 >
                   {" "}
-                  <>Projects - Raul Gabriel {dayjs().year().toString()} </>
+                  <>
+                    <Text tid="footerCopyright" /> {dayjs().year().toString()}{" "}
+                  </>
                 </a>
               </div>
             </div>
