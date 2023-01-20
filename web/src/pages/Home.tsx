@@ -165,7 +165,7 @@ export const Home = () => {
   };
   return (
     <>
-      <div className="w-full h-screen">
+      <div className="w-full ">
         <div className="flex justify-center flex-col items-center ">
           <h1 className="mt-6 text-2xl">Music RecomendApp</h1>
           <label id="demo-simple-select-label">
@@ -254,13 +254,10 @@ export const Home = () => {
           {songs.map((song, key) => {
             return (
               <>
-                <div className="grid grid-cols-3 tablet:grid-cols-1 phone:grid-cols-1 pocket:grid-cols-1 px-4 bg-[#1DB954] pt-2 desktop:text-lg pb-3">
-                  <title
-                    className="text-lg flex py-1 laptop:text-center laptop:justify-center tablet:justify-center tablet:text-center phone:justify-center phone:text-center pocket:justify-center pocket:text-center phone:text-lg pocket:text-lg"
-                    key={key}
-                  >
-                    {" "}
-                    <div>
+                <div className="w-full flex items-center justify-center bg-[#1DB954]">
+                    
+                  <div className="w-auto p-8 rounded overflow-hidden shadow-lg m-10">
+                    <div className="">
                       <Link
                         to={resolvePath(
                           generatePath("/songs/:link", {
@@ -272,35 +269,36 @@ export const Home = () => {
                         target="_parent"
                         key={song.id}
                       >
-                        {" "}
                         {song.name}
+                        <span className="flex-col flex">
+                          {" "}
+                          {song.artists[0].name}
+                        </span>
                       </Link>{" "}
-                      <br />
-                      <span className="flex-col flex">
-                        {" "}
-                        {song.artists[0].name}
+                      <p className="text-gray-700 text-base">
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-center px-4 pt-4 space-x-20">
+                      <span
+                        className="text-center py-2 hover:text-white duration-300 text-md underline self-center cursor-pointer"
+                        onClick={() =>
+                          window.open(`${song.external_urls.spotify}`, "_blank")
+                        }
+                      >
+                        <Text tid="songSecondColumn" />
                       </span>
-                    </div>{" "}
-                  </title>
-                  <span className="hidden"> {song.id} </span>
-                  <span
-                    className="text-center py-2 hover:text-white duration-300 text-md underline self-center cursor-pointer"
-                    onClick={() =>
-                      window.open(`${song.external_urls.spotify}`, "_blank")
-                    }
-                  >
-                    <Text tid="songSecondColumn" />
-                  </span>
-                  <a
-                    href={song.preview_url}
-                    target="_blank"
-                    className="flex flex-col text-center self-center"
-                  >
-                    {" "}
-                    <Text tid="songThirdColumnBefore" /> <br />{" "}
-                    <Text tid="songThirdColumnAfter" />
-                  </a>
-                </div>{" "}
+
+                      <span
+                        className="text-center py-2 hover:text-white duration-300 text-md underline self-center cursor-pointer"
+                        onClick={() =>
+                          window.open(`${song.preview_url}`, "_blank")
+                        }
+                      >
+                        <Text tid="songThirdColumnBefore" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
                 {!token ? (
                   <Login />
                 ) : (
@@ -321,7 +319,7 @@ export const Home = () => {
                           {" "}
                           Logout{" "}
                           <HiLogout
-                            className=" ml-3 text-md self-center flex mr-5"
+                            className=" ml-3 text-md self-center flex mr-5 cursor-pointer"
                             onClick={logout}
                           />
                         </span>
