@@ -9,7 +9,6 @@ import { useParams, useResolvedPath } from "react-router-dom";
 import { Button } from "../components/Button";
 import Footer from "../components/Footer";
 import { Navbar } from "../components/Navbar";
-import { getCalmSongs, getMusicStory } from "../utils/services/getSongs";
 
 export const SongPage = () => {
   useEffect(() => {
@@ -44,9 +43,9 @@ export const SongPage = () => {
   //return
   return (
     <>
-      <div className="w-full h-screen">
+      <div className="w-full h-screen flex items-center justify-center">
         {" "}
-        <section className="grid grid-cols-3 gap-3 leading-5">
+        <section className="leading-5">
           <div className="flex flex-col self-center justify-center">
             <title className="flex">  Música atual:</title>
               <span className="">
