@@ -7,12 +7,12 @@ export const Spotify = () => {
     <div className="w-full bg-[#1DB954]">
       <nav className="grid grid-cols-3 gap-1">
         <div className="justify-center self-center ml-2 ultrawide:my-2">
-          <BsSpotify className="text-5xl hover:text-white duration-300 cursor-pointer" onClick={()=>window.open("https://spotify.com", "_blank")} />
+          <BsSpotify className="text-5xl hover:text-white duration-300 cursor-pointer" onClick={()=>window.open("https://spotify.com")} />
         </div>
-        <div className="justify-center self-center text-center my-2 tablet:text-md phone:text-sm pocket:text-xs">
+        <div className="justify-center self-center text-center my-2 tablet:text-md text-xs">
           <Text tid="spotifyDisclaimerMiddleText" /> 
         </div>
-        <div className="justify-center self-center text-right my-2 phone:text-sm pocket:text-xs">
+        <div className="justify-center self-center text-right my-2 text-xs">
             <Text tid="spotifyDisclaimerRightText" />
         </div>
       </nav>
