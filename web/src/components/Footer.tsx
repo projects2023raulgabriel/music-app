@@ -1,12 +1,11 @@
 import React from "react";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
-import { Text } from "./Text";
 
 export default function Footer() {
   return (
-    <>
-      <footer className="w-full text-slate-400">
+    <div className="absolute w-full bottom-0 left-0">
+      <footer className="w-full text-slate-400 ">
         <div className="pt-16 pb-12 text-sm border-t border-slate-900 bg-slate-800">
           <div className="px-6 mx-auto">
             <div className="grid grid-cols-3 md:grid-cols-8 lg:grid-cols-12 justify-center pocket:grid-cols-1">
@@ -18,19 +17,15 @@ export default function Footer() {
                   className="mb-6 text-base font-medium text-white pocket:mb-3"
                   id="footer-docs-dark"
                 >
-                  <Text tid="footerFirstTitle" />
+                  Docs & help
                 </h3>
                 <ul>
                   <li className="mb-2 leading-6">
-                    <span
+                  <span
                       className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600 cursor-pointer"
-                      onClick={() =>
-                        window.location.assign(
-                          "https://github.com/projects2023raulgabriel/music-app/docs"
-                        )
-                      }
+                      onClick={()=>window.location.assign("https://github.com/projects2023raulgabriel/music-app/docs")}
                     >
-                      <Text tid="footerFirstColumnText" />
+                      Documentation
                     </span>
                   </li>
                 </ul>
@@ -43,25 +38,21 @@ export default function Footer() {
                   className="mb-6 text-base font-medium text-white pocket:mb-3"
                   id="footer-about-dark "
                 >
-                  <Text tid="footerSecondTitle" />{" "}
+                  About us
                 </h3>
                 <ul>
                   <li className="mb-2 leading-6">
                     <span
                       className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600 cursor-pointer"
-                      onClick={() =>
-                        window.location.assign(
-                          "https://github.com/projects2023raulgabriel"
-                        )
-                      }
+                      onClick={()=>window.location.assign("https://github.com/projects2023raulgabriel")}
                     >
-                      <Text tid="footerSecondColumnFirstText" />
+                      About us
                     </span>
                   </li>
 
                   <li className="mb-2 leading-6">
                     <a className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600">
-                      <Text tid="footerSecondColumnSecondText" />
+                      Blog
                     </a>
                   </li>
                 </ul>
@@ -74,17 +65,17 @@ export default function Footer() {
                   className="mb-6 text-base font-medium text-white pocket:mb-3"
                   id="footer-get-in-touch-dark"
                 >
-                  <Text tid="footerThirdTitle" />
+                  Get in touch
                 </h3>
                 <ul>
                   <li className="mb-2 leading-6">
                     <a className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600">
-                      <Text tid="footerThirdColumnFirstText" />
+                      Contact
                     </a>
                   </li>
                   <li className="mb-2 leading-6">
                     <a className="transition-colors duration-300 hover:text-indigo-500 focus:text-indigo-600">
-                      <Text tid="footerThirdColumnSecondText" />
+                      Support
                     </a>
                   </li>
                 </ul>
@@ -102,9 +93,7 @@ export default function Footer() {
                   target={"_blank"}
                 >
                   {" "}
-                  <>
-                    <Text tid="footerCopyright" /> {dayjs().year().toString()}{" "}
-                  </>
+                  <>Projects - Raul Gabriel {dayjs().year().toString()} </>
                 </a>
               </div>
             </div>
@@ -112,6 +101,6 @@ export default function Footer() {
         </div>
       </footer>
       {/*    <!-- End Dark Theme Footer --> */}
-    </>
+    </div>
   );
 }

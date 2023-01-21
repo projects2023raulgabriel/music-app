@@ -27,8 +27,7 @@ function Login() {
         <Button
           onClick={() => {
             window.open(
-              `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`,
-              "_blank"
+              `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`
             );
           }}
           styles="text-white mt-2 hover:text-indigo-500 duration-300"

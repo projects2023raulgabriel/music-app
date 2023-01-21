@@ -24,10 +24,19 @@ function WebPlayback(props: any) {
       // @ts-ignore
       const player = new window.Spotify.Player({
         name: "Web Playback SDK",
-        getOAuthToken: (cb: (arg0: any) => void) => {
-          cb(props.token);
-        },
         volume: 0.5,
+        getOAuthToken: (access_token: string | null) => {
+          var access_token = window.localStorage.getItem("access_token");
+          let spotify_uri;
+          fetch(`https://api.spotify.com/v1/me/player/play`, {
+            method: "PUT",
+            body: JSON.stringify({ uris: [spotify_uri] }),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${access_token}`,
+            },
+          });
+        },
       });
 
       setPlayer(player);
@@ -57,56 +66,72 @@ function WebPlayback(props: any) {
         });
       });
     };
+    setActive(true);
   }, []);
-  return (
-    <>
-      <div className="container">
-        <div className="main-wrapper">
-          <img
-            src={current_track.album.images[0].url}
-            className="now-playing__cover"
-            alt=""
-          />
+  if (!is_active) {
+    return (
+      <>
+        <div className="container">
+          <div className="main-wrapper">
+            <b>
+              {" "}
+              Instance not active. Transfer your playback using your Spotify app{" "}
+            </b>
+          </div>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className="container">
+          <div className="main-wrapper">
+            <img
+              src={current_track.album.images[0].url}
+              className="now-playing__cover"
+              alt=""
+            />
 
-          <div className="now-playing__side">
-            <div className="now-playing__name">{current_track.name}</div>
-            <button
-              className="btn-spotify"
-              onClick={() => {
-                // @ts-ignore
-                player!.previousTrack();
-              }}
-            >
-              &lt;&lt;
-            </button>
+            <div className="now-playing__side">
+              <div className="now-playing__name">{current_track.name}</div>
+              <button
+                className="btn-spotify"
+                onClick={() => {
+                  // @ts-ignore
+                  player!.previousTrack();
+                }}
+              >
+                &lt;&lt;
+              </button>
 
-            <button
-              className="btn-spotify"
-              onClick={() => {
-                // @ts-ignore
-                player!.togglePlay();
-              }}
-            >
-              {is_paused ? "PLAY" : "PAUSE"}
-            </button>
+              <button
+                className="btn-spotify"
+                onClick={() => {
+                  // @ts-ignore
+                  player!.togglePlay();
+                }}
+              >
+                {is_paused ? "PLAY" : "PAUSE"}
+              </button>
 
-            <button
-              className="btn-spotify"
-              onClick={() => {
-                // @ts-ignore
-                player!.nextTrack();
-              }}
-            >
-              &gt;&gt;
-            </button>
-            <div className="now-playing__artist">
-              {current_track.artists[0].name}
+              <button
+                className="btn-spotify"
+                onClick={() => {
+                  // @ts-ignore
+                  player!.nextTrack();
+                }}
+              >
+                &gt;&gt;
+              </button>
+              <div className="now-playing__artist">
+                {current_track.artists[0].name}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
 
 export default WebPlayback;
