@@ -7,7 +7,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { TrackObjectSimplified } from "./interfaces";
+import { TrackObjectSimplified } from "../interfaces";
 import { generatePath, Link, resolvePath } from "react-router-dom";
 import { MdArrowDropDown } from "react-icons/md";
 import { HiLogout } from "react-icons/hi";
@@ -15,9 +15,8 @@ import { IToken } from "../interfaces";
 import Login from "./Login";
 import { BsSpotify } from "react-icons/bs";
 import { Text } from "../components/Text";
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+import Carousel from "react-material-ui-carousel";
+
 export const Home = () => {
   // login and spotify auth
   const [token, setToken] = useState<IToken>();
@@ -164,7 +163,7 @@ export const Home = () => {
     return link;
   };
   return (
-    <>
+    <div className="relative min-h-full mb-96">
       <div className="w-full ">
         <div className="flex justify-center flex-col items-center ">
           <h1 className="mt-6 text-2xl">Music RecomendApp</h1>
@@ -249,89 +248,102 @@ export const Home = () => {
             </FormControl>
           </Box>
         </div>
-
-        <div className="items-center mt-10 divide-y">
-          {songs.map((song, key) => {
-            return (
-              <>
-                <div className="w-full flex items-center justify-center bg-[#1DB954]">
-                    
-                  <div className="w-auto p-8 rounded overflow-hidden shadow-lg m-10">
-                    <div className="">
-                      <Link
-                        to={resolvePath(
-                          generatePath("/songs/:link", {
-                            link: nameToLink(song.name),
-                          }),
-                          "../../../"
-                        )}
-                        className="flex-col"
-                        target="_parent"
-                        key={song.id}
-                      >
-                        {song.name}
-                        <span className="flex-col flex">
-                          {" "}
-                          {song.artists[0].name}
+        
+          <div className="items-center mt-10 divide-y">
+          <Carousel
+          fullHeightHover={true} 
+          swipe={false}
+          navButtonsAlwaysInvisible={false}
+          indicators={true}
+          navButtonsAlwaysVisible={true}
+          NextIcon="next" // Change the "inside" of the next button to "next"
+          PrevIcon="prev" // Change the "inside of the prev button to "prev"
+          className="mb-8"
+        >
+            {songs.map((song, key) => {
+              return (
+                <>
+                  <div className="w-full flex items-center justify-center bg-[#1DB954]">
+                    <div className="w-auto p-8 rounded overflow-hidden shadow-lg m-10">
+                      <div className="">
+                        <Link
+                          to={resolvePath(
+                            generatePath("/songs/:link", {
+                              link: nameToLink(song.name),
+                            }),
+                            "../../../"
+                          )}
+                          className="flex-col"
+                          target="_parent"
+                          key={song.id}
+                        >
+                          {song.name}
+                          <span className="flex-col flex">
+                            {" "}
+                            {song.artists[0].name}
+                          </span>
+                        </Link>{" "}
+                        <p className="text-gray-700 text-base"></p>
+                      </div>
+                      <div className="flex items-center justify-center px-4 pt-4 space-x-20">
+                        <span
+                          className="text-center py-2 hover:text-white duration-300 text-md underline self-center cursor-pointer"
+                          onClick={() =>
+                            window.open(
+                              `${song.external_urls.spotify}`,
+                              "_blank"
+                            )
+                          }
+                        >
+                          <Text tid="songSecondColumn" />
                         </span>
-                      </Link>{" "}
-                      <p className="text-gray-700 text-base">
-                      </p>
-                    </div>
-                    <div className="flex items-center justify-center px-4 pt-4 space-x-20">
-                      <span
-                        className="text-center py-2 hover:text-white duration-300 text-md underline self-center cursor-pointer"
-                        onClick={() =>
-                          window.open(`${song.external_urls.spotify}`, "_blank")
-                        }
-                      >
-                        <Text tid="songSecondColumn" />
-                      </span>
 
-                      <span
-                        className="text-center py-2 hover:text-white duration-300 text-md underline self-center cursor-pointer"
-                        onClick={() =>
-                          window.open(`${song.preview_url}`, "_blank")
-                        }
-                      >
-                        <Text tid="songThirdColumnBefore" />
-                      </span>
+                        <span
+                          className="text-center py-2 hover:text-white duration-300 text-md underline self-center cursor-pointer"
+                          onClick={() =>
+                            window.open(`${song.preview_url}`, "_blank")
+                          }
+                        >
+                          <Text tid="songThirdColumnBefore" />
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                {!token ? (
-                  <Login />
-                ) : (
-                  <>
-                    <div className="py-2 grid grid-cols-3 bg-slate-800 items-center justify-center">
-                      <div className="grid-flow-col text-2xl ml-2 text-white self-center justify-center">
-                        <>
-                          {" "}
-                          <BsSpotify className="text-[#1DB954]" />
-                          {song.linked_from}
-                        </>
-                      </div>{" "}
-                      <div className="text-white text-center">
-                        <WebPlayback />
+                  {!token ? (
+                    <Login />
+                  ) : (
+                    <>
+                      <div className="py-2 grid grid-cols-3 bg-slate-800 items-center justify-center">
+                        <div className="grid-flow-col text-2xl ml-2 text-white self-center justify-center">
+                          <>
+                            {" "}
+                            <BsSpotify className="text-[#1DB954]" />
+                            {song.linked_from}
+                          </>
+                        </div>{" "}
+                        <div className="text-white text-center">
+                          <WebPlayback />
+                        </div>
+                        <nav className="text-center justify-end text-white grid z-10">
+                          <span className="flex flex-row justify-between">
+                            {" "}
+                            Logout{" "}
+                            <HiLogout
+                              className=" ml-3 text-md self-center flex mr-5 cursor-pointer"
+                              onClick={logout}
+                            />
+                          </span>
+                        </nav>
                       </div>
-                      <nav className="text-center justify-end text-white grid z-10">
-                        <span className="flex flex-row justify-between">
-                          {" "}
-                          Logout{" "}
-                          <HiLogout
-                            className=" ml-3 text-md self-center flex mr-5 cursor-pointer"
-                            onClick={logout}
-                          />
-                        </span>
-                      </nav>
-                    </div>
-                  </>
-                )}
-              </>
-            );
-          })}
-        </div>
+                    </>
+                  )}
+                </>
+              );
+            })}
+            </Carousel>
+          </div>
+        
       </div>
-    </>
+    </div>
   );
 };

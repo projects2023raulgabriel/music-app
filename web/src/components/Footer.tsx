@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <>
+    <div className="absolute w-full bottom-0 left-0">
       <footer className="w-full text-slate-400 ">
         <div className="pt-16 pb-12 text-sm border-t border-slate-900 bg-slate-800">
           <div className="px-6 mx-auto">
@@ -101,6 +101,6 @@ export default function Footer() {
         </div>
       </footer>
       {/*    <!-- End Dark Theme Footer --> */}
-    </>
+    </div>
   );
 }

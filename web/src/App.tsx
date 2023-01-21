@@ -25,7 +25,7 @@ function App() {
         </LanguageProvider>
       </ThemeProvider>
     </StyledEngineProvider>
-  );
+  )
 }
 
 export default App;
